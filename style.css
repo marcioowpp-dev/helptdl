@@ -2,59 +2,89 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 body {
-    background-color: #f2f6fa;
-    color: #333;
+    background-color: #f0f4f8;
+    color: #2c3e50;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
     text-align: center;
-    padding: 20px;
-    background-color: #2d89ef;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #2d89ef 0%, #1e5fad 100%);
     color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 header h1 {
-    font-size: 2rem;
-    margin-bottom: 5px;
-}
-
-header p {
-    font-size: 1rem;
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
 }
 
 main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 25px;
+    padding: 30px;
+    flex: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .icon-card {
     background-color: white;
-    border-radius: 16px;
-    padding: 15px;
+    border-radius: 20px;
+    padding: 25px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+    border: 2px solid transparent;
 }
 
 .icon-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+    border-color: #2d89ef;
+}
+
+.icon-card:active {
+    transform: scale(0.95);
 }
 
 .icon {
-    font-size: 64px;
-    margin-bottom: 10px;
+    font-size: 72px;
+    margin-bottom: 15px;
+    display: block;
 }
 
 .label {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #34495e;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 480px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 15px;
+    }
+    .icon { font-size: 50px; }
+    .label { font-size: 1.1rem; }
 }
