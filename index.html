@@ -5,44 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help TDL | Plataforma de Comunicação Assistiva</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo">Help<span>TDL</span></div>
         <div class="nav-links">
-            <a href="#sobre">Sobre</a>
-            <a href="#app">Ferramenta</a>
-            <button class="btn-tutor" onclick="toggleLogin()">Área do Tutor 🔒</button>
+            <button class="btn-tutor" onclick="toggleModal('login-modal')">Área do Tutor 🔒</button>
         </div>
     </nav>
 
-    <header class="hero" id="sobre">
-        <div class="hero-content">
-            <h1>Comunicação sem barreiras.</h1>
-            <p>Uma ferramenta pedagógica desenhada para apoiar o desenvolvimento da linguagem de forma lúdica e intuitiva.</p>
-            <a href="#app" class="btn-main">Abrir Painel de Voz</a>
-        </div>
-    </header>
+    <section class="selection-overlay" id="selection-screen">
+        <div class="selection-box">
+            <div class="badge">Acesso Institucional</div>
+            <h2>Olá! Selecione sua Unidade</h2>
+            <p>Escolha a escola para carregar o painel personalizado.</p>
+            
+            <div class="selectors">
+                <select id="select-estado">
+                    <option value="PR">Paraná</option>
+                </select>
 
-    <section class="app-section" id="app">
-        <div class="app-header">
-            <h2>Painel de Comunicação</h2>
-            <p>Toque no card para emitir a voz</p>
+                <select id="select-cidade">
+                    <option value="paranagua">Paranaguá</option>
+                </select>
+
+                <select id="select-escola">
+                    <option value="">Selecione a Escola...</option>
+                    <option value="1">Escola Municipal Escola 1</option>
+                    <option value="2">Escola Municipal Escola 2</option>
+                    <option value="3">Escola Municipal Escola 3</option>
+                </select>
+
+                <button class="btn-main" onclick="entrarNaEscola()">Acessar Painel da Escola</button>
+            </div>
         </div>
-        <main id="icons-container">
-            </main>
     </section>
+
+    <section class="app-section" id="app-content" style="display: none;">
+        <div class="app-header-info">
+            <span id="escola-tag"></span>
+            <button class="btn-exit" onclick="window.location.reload()">Trocar Unidade</button>
+        </div>
+        
+        <div class="app-title">
+            <h2>Comunicação Alternativa</h2>
+            <p>Toque no card para ouvir a voz personalizada do tutor</p>
+        </div>
+
+        <main id="icons-container"></main>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p><strong>Help TDL</strong> - Tecnologia Assistiva</p>
+            <p>Contato: mteclitoral@gmail.com</p>
+        </div>
+        <p class="hashtags">#ajudatdl</p>
+    </footer>
 
     <div id="login-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="toggleLogin()">&times;</span>
-            <h2>Acesso do Professor</h2>
-            <p>Identifique-se para gerenciar seus alunos</p>
-            <form>
-                <input type="text" placeholder="CPF (somente números)" required>
-                <input type="password" placeholder="Senha" required>
-                <button type="submit" class="btn-login">Entrar no Painel</button>
+            <span class="close" onclick="toggleModal('login-modal')">&times;</span>
+            <h3>Acesso do Tutor</h3>
+            <p>Gerencie os ícones e frases da sua turma.</p>
+            <form id="login-form">
+                <input type="text" id="login-cpf" placeholder="CPF (123.123.123-12)" required>
+                <input type="password" id="login-senha" placeholder="Senha (23)" required>
+                <button type="submit" class="btn-login">Entrar no Perfil</button>
             </form>
         </div>
     </div>

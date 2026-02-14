@@ -7,7 +7,6 @@ const icons = [
     { icon: "🤕", text: "Ajuda", speak: "Preciso de ajuda" }
 ];
 
-// Voz
 function speakText(text) {
     window.speechSynthesis.cancel();
     const speech = new SpeechSynthesisUtterance(text);
@@ -16,18 +15,40 @@ function speakText(text) {
     window.speechSynthesis.speak(speech);
 }
 
-// Modal Toggle
-function toggleLogin() {
-    const modal = document.getElementById("login-modal");
-    modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
+function entrarNaEscola() {
+    const escola = document.getElementById('select-escola');
+    if (!escola.value) return alert("Selecione uma escola");
+
+    document.getElementById('selection-screen').style.display = 'none';
+    document.getElementById('app-content').style.display = 'block';
+    document.getElementById('escola-tag').innerText = `UNIDADE: ${escola.options[escola.selectedIndex].text}`;
+    
+    const container = document.getElementById("icons-container");
+    container.innerHTML = "";
+    icons.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "icon-card";
+        card.innerHTML = `<span style="font-size: 3.5rem; display:block; margin-bottom:10px;">${item.icon}</span><strong>${item.text}</strong>`;
+        card.onclick = () => speakText(item.speak);
+        container.appendChild(card);
+    });
 }
 
-// Render App
-const container = document.getElementById("icons-container");
-icons.forEach(item => {
-    const card = document.createElement("div");
-    card.className = "icon-card";
-    card.innerHTML = `<span class="icon">${item.icon}</span><div class="label">${item.text}</div>`;
-    card.onclick = () => speakText(item.speak);
-    container.appendChild(card);
-});
+function toggleModal(id) {
+    const m = document.getElementById(id);
+    m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+}
+
+// Lógica de Login para Apresentação
+document.getElementById('login-form').onsubmit = (e) => {
+    e.preventDefault();
+    const cpf = document.getElementById('login-cpf').value;
+    const senha = document.getElementById('login-senha').value;
+
+    if(cpf === "123.123.123-12" && senha === "23") {
+        alert("Acesso Autorizado! Bem-vindo ao Perfil do Tutor. Agora você pode editar os cards desta escola.");
+        toggleModal('login-modal');
+    } else {
+        alert("CPF ou Senha incorretos.");
+    }
+};

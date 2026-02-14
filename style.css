@@ -1,120 +1,42 @@
 :root {
     --primary: #2d89ef;
-    --dark: #1e3a5a;
-    --light: #f8fafc;
-    --accent: #00ebc7;
+    --dark: #1e293b;
+    --bg: #f1f5f9;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background: var(--bg); color: var(--dark); }
 
-body { background-color: var(--light); color: var(--dark); scroll-behavior: smooth; }
-
-/* Navbar */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0; z-index: 1000;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 5%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
-
 .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
 .logo span { color: var(--dark); }
 
-.btn-tutor {
-    background: var(--dark);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-}
+.btn-tutor { background: var(--dark); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
 
-/* Hero Section */
-.hero {
-    padding: 80px 5%;
-    background: linear-gradient(rgba(45, 137, 239, 0.05), rgba(45, 137, 239, 0.1)), url('https://img.freepik.com/free-photo/cute-boy-using-tablet_23-2148121256.jpg'); /* Exemplo de fundo */
-    background-size: cover;
-    text-align: center;
-}
+/* Seleção Inicial */
+.selection-overlay { height: 80vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.selection-box { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 100%; max-width: 450px; text-align: center; }
+.badge { display: inline-block; background: #e0f2fe; color: #0369a1; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: bold; margin-bottom: 15px; }
+.selectors select { width: 100%; padding: 14px; margin: 8px 0; border-radius: 10px; border: 2px solid #e2e8f0; background: #f8fafc; font-size: 1rem; }
+.btn-main { width: 100%; background: var(--primary); color: white; border: none; padding: 16px; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 15px; }
 
-.hero-content h1 { font-size: 3rem; margin-bottom: 20px; }
-.btn-main {
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    margin-top: 20px;
-    font-weight: bold;
-}
+/* App Content */
+.app-header-info { background: #cbd5e1; padding: 10px 5%; display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: bold; }
+.app-title { text-align: center; padding: 40px 20px 20px; }
+#icons-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 20px; padding: 20px 5% 60px; max-width: 1100px; margin: 0 auto; }
+.icon-card { background: white; padding: 30px; border-radius: 20px; text-align: center; cursor: pointer; border: 2px solid #e2e8f0; transition: 0.3s; }
+.icon-card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
-/* App Section */
-.app-section { padding: 60px 5%; background: white; }
-.app-header { text-align: center; margin-bottom: 40px; }
-
-#icons-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.icon-card {
-    background: var(--light);
-    border: 2px solid #e2e8f0;
-    border-radius: 20px;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.icon-card:hover { transform: scale(1.05); border-color: var(--primary); }
-.icon { font-size: 3rem; display: block; margin-bottom: 10px; }
+/* Footer */
+.main-footer { background: var(--dark); color: white; padding: 40px 5%; text-align: center; }
+.hashtags { color: var(--primary); margin-top: 10px; font-weight: bold; }
 
 /* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-}
-
-.modal-content input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-.btn-login {
-    width: 100%;
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer;
-}
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 2000; justify-content: center; align-items: center; }
+.modal-content { background: white; padding: 40px; border-radius: 24px; width: 350px; position: relative; }
+.modal-content input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; }
+.btn-login { width: 100%; background: var(--primary); color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+.close { position: absolute; top: 15px; right: 20px; cursor: pointer; font-size: 1.5rem; }
