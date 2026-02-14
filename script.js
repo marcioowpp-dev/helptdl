@@ -1,4 +1,3 @@
-// Lista de ícones e frases configuráveis
 const icons = [
     { icon: "💧", text: "Água", speak: "Eu quero água" },
     { icon: "🚽", text: "Banheiro", speak: "Quero ir ao banheiro" },
@@ -8,44 +7,27 @@ const icons = [
     { icon: "🤕", text: "Ajuda", speak: "Preciso de ajuda" }
 ];
 
-// Função principal de voz
+// Voz
 function speakText(text) {
-    // Interrompe qualquer fala anterior para não encavalar o som
-    window.speechSynthesis.cancel(); 
-
+    window.speechSynthesis.cancel();
     const speech = new SpeechSynthesisUtterance(text);
     speech.lang = "pt-BR";
-    speech.rate = 0.9; // Velocidade levemente reduzida para clareza no TDL
-    speech.pitch = 1.0;
+    speech.rate = 0.9;
     window.speechSynthesis.speak(speech);
 }
 
-// Renderização dos cards no container
-const container = document.getElementById("icons-container");
+// Modal Toggle
+function toggleLogin() {
+    const modal = document.getElementById("login-modal");
+    modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
+}
 
+// Render App
+const container = document.getElementById("icons-container");
 icons.forEach(item => {
     const card = document.createElement("div");
     card.className = "icon-card";
-    
-    // Acessibilidade: define o card como um botão para leitores de tela
-    card.setAttribute("role", "button");
-    card.setAttribute("tabindex", "0");
-    card.setAttribute("aria-label", `Pedir ${item.text}`);
-
-    card.innerHTML = `
-        <span class="icon" aria-hidden="true">${item.icon}</span>
-        <div class="label">${item.text}</div>
-    `;
-
-    // Evento de clique
-    card.addEventListener("click", () => {
-        speakText(item.speak);
-    });
-
-    // Suporte para teclado (Enter)
-    card.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") speakText(item.speak);
-    });
-
+    card.innerHTML = `<span class="icon">${item.icon}</span><div class="label">${item.text}</div>`;
+    card.onclick = () => speakText(item.speak);
     container.appendChild(card);
 });

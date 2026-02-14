@@ -3,21 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Help TDL - Comunicação Assistiva</title>
+    <title>Help TDL | Plataforma de Comunicação Assistiva</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Help TDL</h1>
-        <p>Toque no ícone para ouvir a frase</p>
+    <nav class="navbar">
+        <div class="logo">Help<span>TDL</span></div>
+        <div class="nav-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#app">Ferramenta</a>
+            <button class="btn-tutor" onclick="toggleLogin()">Área do Tutor 🔒</button>
+        </div>
+    </nav>
+
+    <header class="hero" id="sobre">
+        <div class="hero-content">
+            <h1>Comunicação sem barreiras.</h1>
+            <p>Uma ferramenta pedagógica desenhada para apoiar o desenvolvimento da linguagem de forma lúdica e intuitiva.</p>
+            <a href="#app" class="btn-main">Abrir Painel de Voz</a>
+        </div>
     </header>
 
-    <main id="icons-container" role="region" aria-label="Painel de comunicação">
-        </main>
+    <section class="app-section" id="app">
+        <div class="app-header">
+            <h2>Painel de Comunicação</h2>
+            <p>Toque no card para emitir a voz</p>
+        </div>
+        <main id="icons-container">
+            </main>
+    </section>
 
-    <footer>
-        <p>© 2026 Help TDL - Tecnologia Assistiva</p>
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleLogin()">&times;</span>
+            <h2>Acesso do Professor</h2>
+            <p>Identifique-se para gerenciar seus alunos</p>
+            <form>
+                <input type="text" placeholder="CPF (somente números)" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit" class="btn-login">Entrar no Painel</button>
+            </form>
+        </div>
     </div>
 
     <script src="script.js"></script>
